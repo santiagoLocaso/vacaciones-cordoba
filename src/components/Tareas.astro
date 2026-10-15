@@ -1,0 +1,114 @@
+---
+
+---
+
+<section id="tab-tareas" class="tab-content hidden space-y-8">
+  <div
+    class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-slate-800/40 p-6 rounded-3xl border border-slate-700/50"
+  >
+    <div>
+      <h2 class="text-2xl font-bold text-white flex items-center gap-3">
+        <i data-lucide="check-square" class="text-purple-400 w-7 h-7"></i>
+        Tareas y Organización Diario
+      </h2>
+      <p class="text-slate-400 text-sm mt-1">
+        Asignar quién compra la comida, quién cocina, encargados del asado, etc.
+      </p>
+    </div>
+    <button
+      onclick="toggleModal('modal-tarea')"
+      class="w-full md:w-auto px-5 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-bold hover:from-purple-400 hover:to-indigo-400 transition shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2"
+    >
+      <i data-lucide="plus" class="w-5 h-5"></i>
+      Nueva Tarea
+    </button>
+  </div>
+
+  <div
+    id="tareas-container"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    <!-- Renderizado Tareas JS -->
+  </div>
+</section>
+
+<!-- Modal Tarea -->
+<div
+  id="modal-tarea"
+  class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden justify-center items-center p-4"
+>
+  <div class="glass-card max-w-lg w-full rounded-3xl p-6 sm:p-8 space-y-6">
+    <div
+      class="flex items-center justify-between border-b border-slate-800 pb-4"
+    >
+      <h3 class="text-xl font-bold text-white flex items-center gap-2">
+        <i data-lucide="list-todo" class="text-purple-400 w-6 h-6"></i>
+        Agregar Tarea
+      </h3>
+      <button
+        onclick="toggleModal('modal-tarea')"
+        class="text-slate-400 hover:text-white"
+      >
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <form id="form-tarea" onsubmit="guardarTarea(event)" class="space-y-4">
+      <div>
+        <label
+          class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5"
+          >Descripción de la Tarea</label
+        >
+        <input
+          type="text"
+          id="tarea-titulo"
+          required
+          placeholder="Ej: Comprar carne y carbón para el asado"
+          class="w-full px-4 py-3 rounded-xl glass-input text-white text-sm focus:ring-2 focus:ring-purple-500"
+        />
+      </div>
+      <div>
+        <label
+          class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5"
+          >Encargado / Responsable</label
+        >
+        <input
+          type="text"
+          id="tarea-asignado"
+          placeholder="Ej: Santi R y Juan"
+          class="w-full px-4 py-3 rounded-xl glass-input text-white text-sm focus:ring-2 focus:ring-purple-500"
+        />
+      </div>
+      <div>
+        <label
+          class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5"
+          >Categoría</label
+        >
+        <select
+          id="tarea-categoria"
+          class="w-full px-4 py-3 rounded-xl glass-input text-white text-sm focus:ring-2 focus:ring-purple-500 bg-slate-900"
+        >
+          <option value="Comida / Asado">Comida / Asado 🥩</option>
+          <option value="Bebidas / Hielo">Bebidas / Hielo 🍺</option>
+          <option value="Logística">Logística / Llaves 🔑</option>
+          <option value="Limpieza">Limpieza 🧹</option>
+          <option value="Otros">Otros 📌</option>
+        </select>
+      </div>
+
+      <div class="pt-4 flex items-center justify-end gap-3">
+        <button
+          type="button"
+          onclick="toggleModal('modal-tarea')"
+          class="px-5 py-2.5 rounded-xl text-slate-400 hover:text-white font-semibold text-sm"
+          >Cancelar</button
+        >
+        <button
+          type="submit"
+          class="px-6 py-2.5 rounded-xl bg-purple-500 hover:bg-purple-400 text-white font-bold text-sm shadow-lg shadow-purple-500/20"
+          >Agregar Tarea</button
+        >
+      </div>
+    </form>
+  </div>
+</div>
